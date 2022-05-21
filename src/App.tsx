@@ -1,11 +1,17 @@
-import React from 'react';
+import React, {FC, useEffect, useState} from 'react';
+import { useAction, useAtom } from '@reatom/react';
+import countdownTimerAtom from './store/atoms/countdownAtom';
+import { decrementTimerAction } from './store/actions/countdownActions';
 import './App.css';
 
-function App() {
+const App:FC = () => {
+  const countDown = useAtom(countdownTimerAtom);  
+  const decrement = useAction(decrementTimerAction);
+
   return (
-    <div>
-      kellog
-    </div>
+      <div className='App'>
+        {countDown}
+      </div>    
   );
 }
 
