@@ -26,6 +26,10 @@ export default class TimeParser {
         return minutes * this.SECONDS_IN_MINUTE;
     }
 
+    public getSecondsInMinutes (seconds: number) {
+        return seconds / this.SECONDS_IN_MINUTE;
+    }
+
     public getParsedSeconds (seconds: number) {
         const fullMinutes = this.addZeroes(this.getFullMinutesFromSeconds(seconds));
         const restSeconds = this.addZeroes(this.getRestSeconds(seconds));

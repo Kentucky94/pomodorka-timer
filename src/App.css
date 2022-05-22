@@ -1,7 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swa");
+:root {
+    --white: #FAFAFA;
+    --faded: rgba(250, 250, 250, 0.1);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 body {
     font-family: "Inter", sans-serif;
+}
+
+.button {
+    box-sizing: border-box;
+    padding: 22px 47px;
+    margin: 0 11px;
+    gap: 10px;
+    border: 1px solid var(--white);
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+    border-radius: 300px;
+    background: transparent;
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 30px;
+    color: var(--white);
+    text-transform: capitalize;
+    cursor: pointer;
 }
 
 .App {
@@ -9,6 +40,73 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    font-size: 100px;
+    min-height: 100vh;
+    font-size: 60px;
+    padding: 100px 0;
+}
+
+.timer {
+    position: relative;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+}
+
+.timer-circle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--white) 0%, var(--white) 0%, var(--faded) 0%, var(--faded) 100%
+    );
+    -webkit-mask: radial-gradient(transparent 68%,#000 50%);
+    mask: radial-gradient(transparent 68%,#000 50%);
+}
+
+.control-buttons {
+    padding: 20px 0;
+}
+
+.settings-form {
+    min-width: 500px;
+    padding: 30px;
+    background: linear-gradient(90deg, #F78CA0 0%, #F9748F 20.31%, #FD868C 66.67%, #FE9A8B 100%), #FEAFAF;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-form__input-label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.settings-form__input {
+    padding: 0 17px;
+    margin: 9px 0 23px;
+    height: 73px;
+    line-height: 73px;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--white);
+    outline: none;
+}
+
+.settings-form__input-label-name {
+    font-size: 15px;
+    color: var(--white);
+}
+
+.settings-form_buttons {
+    text-align: right;
 }

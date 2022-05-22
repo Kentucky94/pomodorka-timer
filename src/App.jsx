@@ -1,30 +1,27 @@
 import { useAction, useAtom } from '@reatom/react';
 import React, { useEffect } from 'react';
-import { initTimerAction, startIntervalAction, pauseTimerAction, clearTimerAction } from './store/atoms/countdownAtom';
+import ControlButtons from './components/Buttons/ControlButtons';
 import SettingsModal from './components/SettingsModal/SettingsModal';
-import countdownTimerAtom from './store/atoms/countdownAtom';
-import TimeParser from './utils/TimeParser';
+import countdownTimerAtom, { initTimerAction } from './store/atoms/countdownAtom';
+import Timer from './components/Timer/Timer';
 import './App.css';
 
 const App = () => {
-  const timeParser = TimeParser.getParser();
-  const {secondsLeft, onBreak} = useAtom(countdownTimerAtom);
-  const initTimer = useAction(initTimerAction)
-  const start = useAction(startIntervalAction);
-  const pause = useAction(pauseTimerAction);
-  const clear = useAction(clearTimerAction)
+  const {onBreak} = useAtom(countdownTimerAtom);
+  const initTimer = useAction(initTimerAction);
 
   useEffect(() => {
     initTimer();
   }, [])
 
+  const red = "linear-gradient(90deg, #F78CA0 0%, #F9748F 20.31%, #FD868C 66.67%, #FE9A8B 100%)";
+  const blue = "linear-gradient(180deg, #48C6EF 0%, #6F86D6 100%)";
+
   return (
     <React.Fragment>
-      <div className='App' style={{background: onBreak ? "lightblue" : "pink"}}>
-        {timeParser.getParsedSeconds(secondsLeft)}
-        <button onClick={pause}>pause</button>
-        <button onClick={start}>start</button>
-        <button onClick={clear}>clear</button>
+      <div className='App' style={{background: onBreak ? blue : red}}>
+        <Timer />
+        <ControlButtons/>
         <SettingsModal/>
       </div>    
     </React.Fragment>
