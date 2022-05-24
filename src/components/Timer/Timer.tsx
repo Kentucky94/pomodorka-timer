@@ -1,19 +1,24 @@
 import { useAtom } from '@reatom/react';
-import React from 'react';
-import countdownAtom from '../../store/atoms/countdownAtom';
+import React, { useCallback, useEffect, useState } from 'react';
+import countdownTimerAtom from '../../store/atoms/countdownAtom';
 import countdownSettingsAtom from '../../store/atoms/countDownSettingsAtom';
 import TimeParser from '../../utils/TimeParser';
 
 const Timer = () => {
     const timeParser = TimeParser.getParser();
-    const {secondsLeft, pomodoroCount} = useAtom(countdownAtom);
+    const {secondsLeft, pomodoroCount} = useAtom(countdownTimerAtom);
     const {pomodorosBeforeLongBreak} = useAtom(countdownSettingsAtom);
+    const [gradientPercentage, setGradientPercentage] = useState<number>(0);
 
-    const countPercentage = Math.floor(pomodoroCount / pomodorosBeforeLongBreak * 100);
+    useEffect(() => {
+        const percentage = Math.floor(pomodoroCount / pomodorosBeforeLongBreak * 100);
+        setGradientPercentage(percentage);
+    }, [pomodoroCount, pomodorosBeforeLongBreak])
+
     const gradientStyle = `conic-gradient(
         var(--white) 0%, 
-        var(--white) ${countPercentage}%, 
-        var(--faded) ${countPercentage}%, 
+        var(--white) ${gradientPercentage}%, 
+        var(--faded) ${gradientPercentage}%, 
         var(--faded) 100%
     )`
 

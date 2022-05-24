@@ -1,7 +1,7 @@
 import { declareAction, declareAtom } from "@reatom/core";
 
-export const decrementTimerAction = declareAction();
-export const setTimerAction = declareAction<number>();
+export const decrementSecondsLeftAction = declareAction();
+export const setSecondsLeftAction = declareAction<number>();
 export const setTimerIntervalAction = declareAction<ReturnType<typeof setInterval>>();
 export const pauseTimerIntervalAction = declareAction();
 export const clearTimerIntervalAction = declareAction();
@@ -16,10 +16,10 @@ const countdownAtom = declareAtom<{secondsLeft: number, pomodoroCount: number, o
     onBreak: false,
     interval: null,
 }, on => [
-    on(decrementTimerAction, state => {
+    on(decrementSecondsLeftAction, state => {
         return { ...state, secondsLeft: state.secondsLeft - 1 };
     }),
-    on(setTimerAction, (state, payload: number) => {
+    on(setSecondsLeftAction, (state, payload: number) => {
         return { ...state, secondsLeft: payload };
     }),
     on(setTimerIntervalAction, (state, payload?: any) =>  { 

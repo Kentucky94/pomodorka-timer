@@ -43,7 +43,7 @@ const SettingsModal = () => {
     )
 
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setState({...state, [event.target.name]: event.target.value || 0})
+        setState({...state, [event.target.name]: event.target.value})
     }
 
     const onSubmitHandler = (event: SyntheticEvent<HTMLFormElement>) => {
