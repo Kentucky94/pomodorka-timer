@@ -1,7 +1,6 @@
 import { useAction, useAtom } from '@reatom/react';
 import React, { SyntheticEvent, useState } from 'react';
 import { setLongBreakLength, setPomodoroLength, setPomodorosBeforeLongBreak, setShortBreakLength } from '../../store/actions/countdownSettingsActions';
-import { setTimerAction } from '../../store/atoms/countdownAtom';
 import countdownSettingsAtom from '../../store/atoms/countDownSettingsAtom';
 import TimeParser from '../../utils/TimeParser';
 import SettingsModalInput from './SettingsModalInput';
@@ -43,8 +42,6 @@ const SettingsModal = () => {
         setPomodorosBeforeLongBreak(value ? (parseInt(value)) : 0)
     )
 
-    const setTimer = useAction(value => setTimerAction(value));
-
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setState({...state, [event.target.name]: event.target.value || 0})
     }
@@ -56,8 +53,6 @@ const SettingsModal = () => {
         submitShortBreakLength(state.inputShortBreakLength);
         submitLongBreakLength(state.inputLongBreakLength);
         submitPomodoroBeforeLongBreak(state.inputPomodoroBeforeLongBreak);
-
-        setTimer(timeParser.getMinutesinSeconds(state.inputPomodoroLength));
     }
 
     const inputsData: {label: string, name: keyof FormStateType}[] = [

@@ -1,12 +1,12 @@
 import { useAction } from '@reatom/react';
 import React from 'react';
-import { clearTimerAction, pauseTimerAction, resumeIntervalAction, startIntervalAction } from '../../store/atoms/countdownAtom';
+import { clearTimer, pauseTimer, resumeTimer, startTimer } from '../../store/actions/countdownActions';
 
 const ControlButtons = () => {
-    const start = useAction(startIntervalAction);
-    const pause = useAction(pauseTimerAction);
-    const clear = useAction(clearTimerAction);
-    const resume = useAction(resumeIntervalAction);
+    const start = useAction(startTimer)
+    const pause = useAction(pauseTimer);
+    const clear = useAction(clearTimer);
+    const resume = useAction(resumeTimer);
     
     return (
         <div className="control-buttons">

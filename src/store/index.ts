@@ -1,5 +1,5 @@
 import { createStore } from "@reatom/core";
-import countdownTimerAtom from "./atoms/countdownAtom";
+import countdownAtom from "./atoms/countdownAtom";
 
 const store = createStore();
 
