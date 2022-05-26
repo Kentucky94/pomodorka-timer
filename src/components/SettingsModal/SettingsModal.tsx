@@ -1,5 +1,7 @@
 import { useAction, useAtom } from '@reatom/react';
 import React, { SyntheticEvent, useState } from 'react';
+import { startTimer } from '../../store/actions/countdownActions';
+import { closeModalAction } from '../../store/actions/countdownModalActions';
 import { setLongBreakLength, setPomodoroLength, setPomodorosBeforeLongBreak, setShortBreakLength } from '../../store/actions/countdownSettingsActions';
 import countdownSettingsAtom from '../../store/atoms/countDownSettingsAtom';
 import TimeParser from '../../utils/TimeParser';
@@ -7,6 +9,8 @@ import SettingsModalInput from './SettingsModalInput';
 
 const SettingsModal = () => {
     const timeParser = TimeParser.getParser();
+    const start = useAction(startTimer);
+    const closeModal = useAction(closeModalAction);
 
     const {
         pomodoroLength, 
@@ -53,6 +57,9 @@ const SettingsModal = () => {
         submitShortBreakLength(state.inputShortBreakLength);
         submitLongBreakLength(state.inputLongBreakLength);
         submitPomodoroBeforeLongBreak(state.inputPomodoroBeforeLongBreak);
+
+        closeModal();
+        start();
     }
 
     const inputsData: {label: string, name: keyof FormStateType}[] = [
@@ -87,7 +94,7 @@ const SettingsModal = () => {
             ))}
             <div className="settings-form_buttons">
                 <button className='button' type="submit">Save</button>
-                <button className='button' type="button">Close</button>
+                <button className='button' onClick={closeModal} type="button">Close</button>
             </div>
         </form>
     );

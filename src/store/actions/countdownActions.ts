@@ -12,8 +12,9 @@ import countdownAtom, {
     setTimerOnBreak,
     unsetTimerOnBreak
 } from "../atoms/countdownAtom";
+import { setPauseAction, setStartAction, setStopAction } from "../actions/countdownStatusActions";
 
-export const decreaseTimer = declareAction((payload, store) => {
+export const countDownAction = declareAction((payload, store) => {
     const {secondsLeft, pomodoroCount, onBreak} = store.getState(countdownAtom);
     const {pomodorosBeforeLongBreak} = store.getState(countdownSettingsAtom);
 
@@ -47,10 +48,11 @@ export const startTimer = declareAction((payload, store) => {
     const {interval} = store.getState(countdownAtom);
 
     if (!interval) {
-        store.dispatch(initPomodoro())
+        store.dispatch(initPomodoro());
         store.dispatch(setTimerIntervalAction(setInterval(() => {
-            store.dispatch(decreaseTimer());
+            store.dispatch(countDownAction());
         }, INTERVAL_LENGTH)))
+        store.dispatch(setStartAction());
     }
 });
 
@@ -60,6 +62,7 @@ export const pauseTimer = declareAction((payload, store) => {
     if (interval) {
         clearInterval(interval);
         store.dispatch(pauseTimerIntervalAction());
+        store.dispatch(setPauseAction());
     }
 })
 
@@ -71,6 +74,7 @@ export const clearTimer = declareAction((payload, store) => {
     }
 
     store.dispatch(clearTimerIntervalAction());
+    store.dispatch(setStopAction());
 })
 
 export const resumeTimer = declareAction((payload, store) => {
@@ -78,8 +82,10 @@ export const resumeTimer = declareAction((payload, store) => {
 
     if (!interval) {
         store.dispatch(setTimerIntervalAction(setInterval(() => {
-            store.dispatch(decreaseTimer());
-        }, INTERVAL_LENGTH)))
+            store.dispatch(countDownAction());
+        }, INTERVAL_LENGTH)));
+
+        store.dispatch(setStartAction());
     }
 })
 

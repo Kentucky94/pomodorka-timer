@@ -1,1 +1,1 @@
-export const INTERVAL_LENGTH = 10;
+export const INTERVAL_LENGTH = 1000;
