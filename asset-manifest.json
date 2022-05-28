@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Kentucky94/pomodorka-timer/static/css/main.29e5dad4.css",
-    "main.js": "/Kentucky94/pomodorka-timer/static/js/main.5bf21468.js",
-    "index.html": "/Kentucky94/pomodorka-timer/index.html",
-    "main.29e5dad4.css.map": "/Kentucky94/pomodorka-timer/static/css/main.29e5dad4.css.map",
-    "main.5bf21468.js.map": "/Kentucky94/pomodorka-timer/static/js/main.5bf21468.js.map"
+    "main.css": "/pomodorka-timer/static/css/main.29e5dad4.css",
+    "main.js": "/pomodorka-timer/static/js/main.5bf21468.js",
+    "index.html": "/pomodorka-timer/index.html",
+    "main.29e5dad4.css.map": "/pomodorka-timer/static/css/main.29e5dad4.css.map",
+    "main.5bf21468.js.map": "/pomodorka-timer/static/js/main.5bf21468.js.map"
   },
   "entrypoints": [
     "static/css/main.29e5dad4.css",
