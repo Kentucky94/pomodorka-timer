@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/pomodorka-timer/static/css/main.29e5dad4.css",
-    "main.js": "/pomodorka-timer/static/js/main.5bf21468.js",
-    "index.html": "/pomodorka-timer/index.html",
-    "main.29e5dad4.css.map": "/pomodorka-timer/static/css/main.29e5dad4.css.map",
-    "main.5bf21468.js.map": "/pomodorka-timer/static/js/main.5bf21468.js.map"
+    "main.css": "/static/css/main.ac2b703d.css",
+    "main.js": "/static/js/main.5bf21468.js",
+    "index.html": "/index.html",
+    "main.ac2b703d.css.map": "/static/css/main.ac2b703d.css.map",
+    "main.5bf21468.js.map": "/static/js/main.5bf21468.js.map"
   },
   "entrypoints": [
-    "static/css/main.29e5dad4.css",
+    "static/css/main.ac2b703d.css",
     "static/js/main.5bf21468.js"
   ]
 }
