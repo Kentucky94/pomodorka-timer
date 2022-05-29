@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kentucky94.github.io/pomodorka-timer/",
+  "homepage": "https://kentucky94.github.io/pomodorka-timer",
   "dependencies": {
     "@reatom/core": "^1.1.5",
     "@reatom/react": "^1.1.4",
